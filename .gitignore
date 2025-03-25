@@ -2,7 +2,7 @@
 *.log
 *.pot
 *.pyc
-.idea/
+*.idea/
 __pycache__
 db.sqlite3
 media
