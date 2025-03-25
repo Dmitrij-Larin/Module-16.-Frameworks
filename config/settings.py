@@ -85,6 +85,7 @@ USER = os.getenv('MS_SQL_USER')
 PASSWORD = os.getenv('MS_SQL_KEY')
 HOST = os.getenv('MS_SQL_SERVER')
 DATABASE = os.getenv('MS_SQL_DATABASE')
+PAD_DATABASE = os.getenv('MS_PAD_DATABASE')
 DRIVER = os.getenv('MS_SQL_DRIVER')
 
 
