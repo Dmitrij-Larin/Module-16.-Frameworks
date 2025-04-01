@@ -1,0 +1,64 @@
+[
+  {
+    "model": "dogs.breed",
+    "pk": 1,
+    "fields": {
+      "name": "Померанский шпиц",
+      "description": "Пушистая булочка"
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 2,
+    "fields": {
+      "name": "Акита-ину",
+      "description": "Японский охотничий пёс"
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 3,
+    "fields": {
+      "name": "Золотистый ретривер",
+      "description": "Отличный семейный компаньон и друг."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 4,
+    "fields": {
+      "name": "Французский бульдог",
+      "description": "Помимо того, что лает, ещё и \"хрюкает\")"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 1,
+    "fields": {
+      "name": "Сэм",
+      "breed": 1,
+      "photo": "dogs/chipitz.jpeg",
+      "birth_date": "2023-03-05"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 2,
+    "fields": {
+      "name": "Хатико",
+      "breed": 2,
+      "photo": "dogs/hatiko.jpg",
+      "birth_date": "2025-02-13"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 3,
+    "fields": {
+      "name": "Лакки",
+      "breed": 3,
+      "photo": "dogs/lakki.jpeg",
+      "birth_date": "2024-05-12"
+    }
+  }
+]
