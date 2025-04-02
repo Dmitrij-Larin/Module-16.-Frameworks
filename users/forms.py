@@ -25,3 +25,8 @@ class UserRegisterForm(StyleFromMixin, forms.ModelForm):
         return cd['password2']
 
 
+class UserLoginForm(StyleFromMixin, forms.Form):
+    email = forms.EmailField()
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+
+
