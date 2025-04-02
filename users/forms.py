@@ -30,3 +30,10 @@ class UserLoginForm(StyleFromMixin, forms.Form):
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
 
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email', 'first_name', 'last_name', 'phone',)
+        # exclude = ('is_active',)
+
+

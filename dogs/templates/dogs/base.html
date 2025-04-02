@@ -35,7 +35,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'dogs:dog_create' %}">Добавить собаку</a>
                     {% if user.is_authenticated %}
-                        <a class="dropdown-item" href="{% url 'users:user_login' %}">Профиль</a>
+                        <a class="dropdown-item" href="{% url 'users:user_profile' %}">Профиль</a>
                         <a class="dropdown-item" href="{% url 'users:user_register' %}">Выход</a>
                     {% else %}
                         <a class="dropdown-item" href="{% url 'users:user_login' %}">Вход</a>
