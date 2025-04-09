@@ -37,8 +37,7 @@ def user_login_view(request):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect(reverse('dogs:index'))
-                else:
-                    return HttpResponse('Аккаунт неактивен')
+            return HttpResponse('Вы не можете войти на наш ресурс (ошибка пароля, нет аккаунта или Вы забанены)')
     context = {
             'title': 'Вход в аккаунт',
             'form': UserLoginForm
@@ -82,8 +81,7 @@ def user_change_password_view(request):
             update_session_auth_hash(request, user_object)
             messages.success(request, 'Пароль был успешно изменён!')
             return HttpResponseRedirect(reverse('users:user_profile'))
-        else:
-            messages.error(request, 'Не удалось изменить пароль!')
+        messages.error(request, 'Не удалось изменить пароль!')
     context = {
         'form': form
     }
