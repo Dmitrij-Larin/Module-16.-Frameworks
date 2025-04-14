@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 from dogs.forms import DogForm
 from dogs.models import Breed, Dog
@@ -42,27 +43,14 @@ class DodListView(ListView):
     template_name = 'dogs/dogs.html'
 
 
-# def dogs_list_view(request):
-#     context = {
-#         'objects_list': Dog.objects.all(),
-#         'title': 'Питомник - Все наши собаки'
-#     }
-#     return render(request, 'dogs/dogs.html', context)
-
-
-# class Dog
-
-
-@login_required
-def dog_create_view(request):
-    if request.method == 'POST':
-        form = DogForm(request.POST, request.FILES)
-        if form.is_valid():
-            dog_object = form.save()
-            dog_object.owner = request.user
-            dog_object.save()
-            return HttpResponseRedirect(reverse('dogs:dogs_list'))
-    return render(request, 'dogs/create_update.html', {'form': DogForm()})
+class DogCreateView(CreateView):
+    model = Dog
+    form_class = DogForm
+    template_name = 'dogs/create_update.html'
+    extra_context = {
+        'title': 'Добавить собаку'
+    }
+    success_url = reverse_lazy('dogs:dogs_list')
 
 
 @login_required
