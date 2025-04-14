@@ -1,0 +1,19 @@
+body {
+    background-image: url('../background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+.jumbotron {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    }
+
+.card {
+    margin-bottom: 30px;
+    }
+
+.text-center {
+    color: black;
+    fond-weight: bolder;
+    }
