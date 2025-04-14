@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.views import LoginView, PasswordChangeForm, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 
@@ -116,21 +116,27 @@ class UserUpdateView(UpdateView):
 #     return render(request, 'users/user_update.html', context)
 
 
-@login_required
-def user_change_password_view(request):
-    user_object = request.user
-    form = UserPasswordChangeForm(user_object, request.POST)
-    if request.method == 'POST':
-        if form.is_valid():
-            user_object = form.save()
-            update_session_auth_hash(request, user_object)
-            messages.success(request, 'Пароль был успешно изменён!')
-            return HttpResponseRedirect(reverse('users:user_profile'))
-        messages.error(request, 'Не удалось изменить пароль!')
-    context = {
-        'form': form
-    }
-    return render(request, 'users/user_change_password.html', context)
+class UserPasswordChangeView(PasswordChangeView):
+    form_class = UserPasswordChangeForm
+    template_name = 'users/user_change_password.html'
+    success_url = reverse_lazy('users:user_profile')
+
+
+# @login_required
+# def user_change_password_view(request):
+#     user_object = request.user
+#     form = UserPasswordChangeForm(user_object, request.POST)
+#     if request.method == 'POST':
+#         if form.is_valid():
+#             user_object = form.save()
+#             update_session_auth_hash(request, user_object)
+#             messages.success(request, 'Пароль был успешно изменён!')
+#             return HttpResponseRedirect(reverse('users:user_profile'))
+#         messages.error(request, 'Не удалось изменить пароль!')
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'users/user_change_password.html', context)
 
 
 def user_logout_view(request):
