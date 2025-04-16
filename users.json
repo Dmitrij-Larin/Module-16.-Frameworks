@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$720000$oor5en76LzZAapxk7K8xpH$1UFbNXE9RsBtg/XCcu4i67orHMc2dPt/PUuY1LBXC5o=",
-      "last_login": "2025-03-31T21:43:29.002Z",
+      "last_login": "2025-04-16T14:42:14.152Z",
       "is_superuser": true,
       "is_staff": true,
       "date_joined": "2025-03-25T00:35:52.058Z",
@@ -13,7 +13,7 @@
       "last_name": "Adminov",
       "phone": null,
       "telegram": null,
-      "avatar": "",
+      "avatar": "users/admin_7Vr8jD3.jpg",
       "is_active": true,
       "groups": [],
       "user_permissions": []
@@ -24,7 +24,7 @@
     "pk": 3,
     "fields": {
       "password": "pbkdf2_sha256$720000$7WWXZm9UvJgJRhfpcauy7w$63eZoaxPDypX22Nv6ray6z3gMEWbk6p1OBVFmRQcg9g=",
-      "last_login": "2025-04-02T22:35:37.595Z",
+      "last_login": "2025-04-07T22:24:13.561Z",
       "is_superuser": false,
       "is_staff": false,
       "date_joined": "2025-04-02T02:09:14.625Z",
@@ -43,8 +43,8 @@
     "model": "users.user",
     "pk": 4,
     "fields": {
-      "password": "pbkdf2_sha256$720000$T1xeBLjdv04v2H1TghpodA$B7G6TnlLtPb3fm1iINYo/XJ/ZPJRjw4qLtPRGlJ4sMA=",
-      "last_login": null,
+      "password": "pbkdf2_sha256$720000$iZcdkSlnuW5xVGUn9HENFl$XfWjlYDu/mlLxwi0lKw3AYdKgwYDUqE+KHdTf7YIeHU=",
+      "last_login": "2025-04-14T20:20:23.132Z",
       "is_superuser": false,
       "is_staff": false,
       "date_joined": "2025-04-02T23:37:29.929Z",
@@ -53,7 +53,127 @@
       "last_name": "Gosling",
       "phone": null,
       "telegram": null,
-      "avatar": "gosling.jpg",
+      "avatar": "users/gosling2.jpg",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$oFslfZBTcoKjW5bc52oaBE$4b7OOB1fuoS1z6k9Ls+N5lcYc2MZWJJc0QftICGFXYk=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-08T22:48:28.192Z",
+      "email": "user3@web.top",
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$yikM7UtjXClb50B9MZF0I0$IdMjLmWzA42EfipsX2Fo6/qeHMjbaC4PfBTqk88TBt0=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-09T16:53:52.401Z",
+      "email": "user5@web.top",
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$js75bIBZk5jGmOjMnt1G6O$/ELR0sqqptDM/r8q+X5DdJPtjjk5Va6BG/pYtaHmES0=",
+      "last_login": "2025-04-09T20:01:29Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-09T16:58:27Z",
+      "email": "user6@web.top",
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "is_active": false,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$RLEBHjUpTXjyfmA9FsKtOS$CsnLFZ+Q1x8JAuDRHzYPCEobrPNhBW7vIkQ8lqMxHn4=",
+      "last_login": "2025-04-14T22:40:56.264Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-09T19:09:04.142Z",
+      "email": "stethem@web.top",
+      "first_name": "Philosopher",
+      "last_name": "Statham",
+      "phone": null,
+      "telegram": null,
+      "avatar": "users/stethem.JPG",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$xjuKJ2qcJA9F09NEj1VRAK$bDcRKlcmYwPPK8SA/tw29d/A1L2b/MwkkuPYCR/y+pw=",
+      "last_login": "2025-04-14T00:50:15.782Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-14T00:50:01.738Z",
+      "email": "user7@web.top",
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$iH6ZSV4pF6BJf4yyjux0ng$mKdQrCqvMF/h4O8lr3BcXrWdQ38qUNAfIcHpWj05RJg=",
+      "last_login": "2025-04-14T21:49:36.347Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-14T21:42:03.497Z",
+      "email": "pivovar@web.top",
+      "first_name": "Пивандрий",
+      "last_name": "Кегов",
+      "phone": "+70001452369",
+      "telegram": null,
+      "avatar": "users/memy-pro-kegu-1.jpg",
       "is_active": true,
       "groups": [],
       "user_permissions": []

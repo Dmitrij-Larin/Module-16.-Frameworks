@@ -32,13 +32,19 @@
     }
   },
   {
-    "model": "dogs.dog",
-    "pk": 1,
+    "model": "dogs.breed",
+    "pk": 5,
     "fields": {
-      "name": "Сэм",
-      "breed": 1,
-      "photo": "dogs/chipitz.jpeg",
-      "birth_date": "2023-03-05"
+      "name": "Ротвейлер",
+      "description": "Не лезь. ОН ТЕБЯ СОЖРЁТ!!!"
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 6,
+    "fields": {
+      "name": "Джек Рассел Терьер",
+      "description": "Герой видео \"Пёс и кега\""
     }
   },
   {
@@ -48,7 +54,8 @@
       "name": "Хатико",
       "breed": 2,
       "photo": "dogs/hatiko.jpg",
-      "birth_date": "2025-02-13"
+      "birth_date": "2025-02-13",
+      "owner": null
     }
   },
   {
@@ -58,7 +65,62 @@
       "name": "Лакки",
       "breed": 3,
       "photo": "dogs/lakki.jpeg",
-      "birth_date": "2024-05-12"
+      "birth_date": "2024-05-12",
+      "owner": null
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 4,
+    "fields": {
+      "name": "Ричард",
+      "breed": 4,
+      "photo": "dogs/rich.jpg",
+      "birth_date": "2023-01-14",
+      "owner": 4
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 5,
+    "fields": {
+      "name": "Гром",
+      "breed": 5,
+      "photo": "dogs/orig.jpeg",
+      "birth_date": "2022-11-25",
+      "owner": 8
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 9,
+    "fields": {
+      "name": "Дружок",
+      "breed": 1,
+      "photo": "dogs/булка.png",
+      "birth_date": "2023-04-17",
+      "owner": null
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 11,
+    "fields": {
+      "name": "Фродо",
+      "breed": 6,
+      "photo": "dogs/кега_cicvDSv.JPG",
+      "birth_date": "2020-06-16",
+      "owner": 10
+    }
+  },
+  {
+    "model": "dogs.dogparent",
+    "pk": 1,
+    "fields": {
+      "dog": 11,
+      "name": "Майло",
+      "category": 6,
+      "birth_date": "2017-06-18"
     }
   }
 ]
