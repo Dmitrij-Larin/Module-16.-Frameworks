@@ -7,7 +7,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 
 from dogs.forms import DogForm, DogParentForm
 from dogs.models import Breed, Dog, DogParent
-
+from users.models import UserRoles
 
 def index(request):
     context = {
@@ -43,6 +43,27 @@ class DodListView(ListView):
         'title': 'Питомник - Все наши собаки',
     }
     template_name = 'dogs/dogs.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(is_active=True)
+        return queryset
+
+
+class DogDeactivatedListView(LoginRequiredMixin, ListView):
+    model = Dog
+    extra_context = {
+        'title': 'Питомник - неактивные собаки'
+    }
+    template_name = 'dogs/dogs.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.request.user.role in [UserRoles.MODERATOR, UserRoles.ADMIN]:
+            queryset = queryset.filter(is_active=False)
+        if self.request.user.role == UserRoles.USER:
+            queryset = queryset.filter(is_active=False, owner=self.request.user)
+        return queryset
 
 
 class DogCreateView(LoginRequiredMixin, CreateView):

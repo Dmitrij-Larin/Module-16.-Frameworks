@@ -55,6 +55,7 @@
       "breed": 2,
       "photo": "dogs/hatiko.jpg",
       "birth_date": "2025-02-13",
+      "is_active": true,
       "owner": null
     }
   },
@@ -66,6 +67,7 @@
       "breed": 3,
       "photo": "dogs/lakki.jpeg",
       "birth_date": "2024-05-12",
+      "is_active": true,
       "owner": null
     }
   },
@@ -77,6 +79,7 @@
       "breed": 4,
       "photo": "dogs/rich.jpg",
       "birth_date": "2023-01-14",
+      "is_active": true,
       "owner": 4
     }
   },
@@ -88,6 +91,7 @@
       "breed": 5,
       "photo": "dogs/orig.jpeg",
       "birth_date": "2022-11-25",
+      "is_active": true,
       "owner": 8
     }
   },
@@ -99,6 +103,7 @@
       "breed": 1,
       "photo": "dogs/булка.png",
       "birth_date": "2023-04-17",
+      "is_active": true,
       "owner": null
     }
   },
@@ -110,6 +115,7 @@
       "breed": 6,
       "photo": "dogs/кега_cicvDSv.JPG",
       "birth_date": "2020-06-16",
+      "is_active": true,
       "owner": 10
     }
   },
