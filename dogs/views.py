@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.http.response import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
@@ -136,3 +136,14 @@ class DogDeleteView(LoginRequiredMixin, DeleteView):
         'title': 'Удалить собаку'
     }
     success_url = reverse_lazy('dogs:dogs_list')
+
+
+def dog_toggle_activity(request, pk):
+    dog_item = get_object_or_404(Dog, pk=pk)
+    if dog_item.is_active:
+        dog_item.is_active = False
+    else:
+        dog_item.is_active = True
+    dog_item.save()
+    return redirect(reverse('dogs:dogs_list'))
+
