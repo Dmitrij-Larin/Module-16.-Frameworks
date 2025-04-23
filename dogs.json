@@ -91,7 +91,7 @@
       "breed": 5,
       "photo": "dogs/orig.jpeg",
       "birth_date": "2022-11-25",
-      "is_active": true,
+      "is_active": false,
       "owner": 8
     }
   },

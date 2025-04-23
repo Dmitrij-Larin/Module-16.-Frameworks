@@ -1,13 +1,14 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.forms import inlineformset_factory
-from django.http.response import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http.response import Http404
+from django.forms import inlineformset_factory
 
 from dogs.forms import DogForm, DogParentForm
 from dogs.models import Breed, Dog, DogParent
 from users.models import UserRoles
+
 
 def index(request):
     context = {
