@@ -4,12 +4,12 @@
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$720000$oor5en76LzZAapxk7K8xpH$1UFbNXE9RsBtg/XCcu4i67orHMc2dPt/PUuY1LBXC5o=",
-      "last_login": "2025-04-22T19:54:17.793Z",
+      "last_login": "2025-04-25T21:45:50Z",
       "is_superuser": true,
       "is_staff": true,
-      "date_joined": "2025-03-25T00:35:52.058Z",
+      "date_joined": "2025-03-25T00:35:52Z",
       "email": "admin@web.top",
-      "role": "user",
+      "role": "admin",
       "first_name": "Admin",
       "last_name": "Adminov",
       "phone": null,
@@ -67,7 +67,7 @@
     "pk": 4,
     "fields": {
       "password": "pbkdf2_sha256$720000$iZcdkSlnuW5xVGUn9HENFl$XfWjlYDu/mlLxwi0lKw3AYdKgwYDUqE+KHdTf7YIeHU=",
-      "last_login": "2025-04-22T19:45:52.788Z",
+      "last_login": "2025-04-24T22:18:05.227Z",
       "is_superuser": false,
       "is_staff": false,
       "date_joined": "2025-04-02T23:37:29.929Z",
@@ -151,7 +151,7 @@
     "pk": 8,
     "fields": {
       "password": "pbkdf2_sha256$720000$RLEBHjUpTXjyfmA9FsKtOS$CsnLFZ+Q1x8JAuDRHzYPCEobrPNhBW7vIkQ8lqMxHn4=",
-      "last_login": "2025-04-22T17:59:39.956Z",
+      "last_login": "2025-04-25T21:45:26.108Z",
       "is_superuser": false,
       "is_staff": false,
       "date_joined": "2025-04-09T19:09:04.142Z",
@@ -204,6 +204,27 @@
       "phone": "+70001452369",
       "telegram": null,
       "avatar": "users/memy-pro-kegu-1.jpg",
+      "is_active": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$d6OKGRLgZvSgR7ut03RooH$B6CHdi0TY8mLCTyC3DeQPfHiC2sFvoeBH89wETtCz8Y=",
+      "last_login": "2025-04-24T22:14:47Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "date_joined": "2025-04-24T22:09:59Z",
+      "email": "larin4921@gmail.com",
+      "role": "moderator",
+      "first_name": "Anonymous",
+      "last_name": "Anonymous",
+      "phone": null,
+      "telegram": null,
+      "avatar": "",
       "is_active": true,
       "groups": [],
       "user_permissions": []

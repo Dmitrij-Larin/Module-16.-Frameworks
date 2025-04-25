@@ -48,16 +48,24 @@
     }
   },
   {
+    "model": "dogs.breed",
+    "pk": 7,
+    "fields": {
+      "name": "Алабай",
+      "description": "Охранник домашнего скота и участка."
+    }
+  },
+  {
     "model": "dogs.dog",
     "pk": 2,
     "fields": {
       "name": "Хатико",
       "breed": 2,
       "photo": "dogs/hatiko.jpg",
-      "birth_date": "2025-02-13",
+      "birth_date": "2020-02-13",
       "is_active": true,
       "owner": null,
-      "views": 0
+      "views": 20
     }
   },
   {
@@ -70,7 +78,7 @@
       "birth_date": "2024-05-12",
       "is_active": true,
       "owner": null,
-      "views": 0
+      "views": 2
     }
   },
   {
@@ -109,7 +117,7 @@
       "birth_date": "2023-04-17",
       "is_active": true,
       "owner": null,
-      "views": 0
+      "views": 5
     }
   },
   {
@@ -122,6 +130,32 @@
       "birth_date": "2020-06-16",
       "is_active": true,
       "owner": 10,
+      "views": 0
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 15,
+    "fields": {
+      "name": "Айс",
+      "breed": 7,
+      "photo": "dogs/1745532909900.jpg",
+      "birth_date": "2024-05-05",
+      "is_active": true,
+      "owner": 11,
+      "views": 22
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 17,
+    "fields": {
+      "name": "Пушок",
+      "breed": 1,
+      "photo": "",
+      "birth_date": null,
+      "is_active": true,
+      "owner": 1,
       "views": 0
     }
   },
