@@ -40,11 +40,12 @@
                     <div class="col text-center">
                     <a class="dropdown-item" href="{% url 'dogs:breeds' %}">Породы</a>
                     <a class="dropdown-item" href="{% url 'dogs:dogs_list' %}">Собаки</a>
+                    <a class="dropdown-item" href="{% url 'dogs:dog_create' %}">Добавить собаку</a>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'dogs:dog_create' %}">Добавить собаку</a>
                     <div class="col text-center">
                     {% if user.is_authenticated %}
+                        <a class="dropdown-item" href="{% url 'users:users_list' %}">Все пользователи</a>
                         <a class="dropdown-item" href="{% url 'users:user_profile' %}">Профиль</a>
                         <span class="text-muted">{{ user }}</span>
                         <form method="post" action="{% url 'users:user_logout' %}">
