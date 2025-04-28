@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Мои приложения
     'users',
     'dogs',
+    'reviews',
 ]
 
 
