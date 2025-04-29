@@ -9,6 +9,8 @@
             <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                 <li>Создан: {{ object.created }}</li>
             </ul>
+            <a class="btn btn-lg btn-block btn-outline-info"
+               href="{% url 'reviews:review_detail' object.slug %}">Подробнее</a>
         </div>
     </div>
 </div>
