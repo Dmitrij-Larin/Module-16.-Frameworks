@@ -1,15 +1,13 @@
 {% extends 'dogs/base.html' %}
 {% load my_tags %}
 {% block content %}
-
 <div class="container">
     <div class="row">
         {% for object in object_list %}
         {% include 'dogs/includes/inc_dog_card.html' with object=object %}
         {% endfor %}
     </div>
-    <a href="{% url 'dogs:dogs_list' %}" class="btn btn-success">Активные собаки</a>
-    <a href="{% url 'dogs:dogs_deactivated_list' %}" class="btn btn-secondary">Неактивные собаки</a>
+    <a href="{% url 'dogs:dogs_deactivated_list' %}" class="btn btn-secondary m-2 float-right">Неактивные собаки</a>
+    <a href="{% url 'dogs:dogs_list' %}" class="btn btn-success m-2 float-right">Активные собаки</a>
 </div>
-
 {% endblock %}
