@@ -41,7 +41,7 @@ class ReviewDeactivatedListView(ListView):
 class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
     form_class = ReviewForm
-    template_name = 'reviews/create.html'
+    template_name = 'reviews/create_update.html'
     extra_context = {
         'title': "Написать отзыв"
     }
@@ -70,13 +70,13 @@ class ReviewDetailView(LoginRequiredMixin, DetailView):
 class ReviewUpdateView(LoginRequiredMixin, UpdateView):
     model = Review
     form_class = ReviewForm
-    template_name = 'reviews/update.html'
+    template_name = 'reviews/create_update.html'
     extra_context = {
         'title': "Изменить отзыв"
     }
 
     def get_success_url(self):
-        return reverse('review:review_detail')
+        return reverse('reviews:review_detail', args=[self.kwargs.get('slug')])
     
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset=queryset)
@@ -101,6 +101,6 @@ def review_toggle_activity(request, slug):
         review_item.save()
         return redirect(reverse('reviews:reviews_deactivated'))
     else:
-        review_item.sign_of_review = False
+        review_item.sign_of_review = True
         review_item.save()
         return redirect(reverse('reviews:reviews_list'))
