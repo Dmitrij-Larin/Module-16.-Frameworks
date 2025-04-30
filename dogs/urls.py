@@ -1,6 +1,7 @@
 from django.urls import path
 from dogs.views import (index, BreedListView, DodBreedListView, DodListView, DogCreateView, DogDetailView,
-                        DogUpdateView, DogDeleteView, DogDeactivatedListView, dog_toggle_activity, DogSearchListView)
+                        DogUpdateView, DogDeleteView, DogDeactivatedListView, dog_toggle_activity, DogSearchListView,
+                        BreedSearchListView)
 from dogs.apps import DogsConfig
 from django.views.decorators.cache import cache_page, never_cache
 
@@ -10,6 +11,7 @@ urlpatterns = [
     path('', cache_page(60)(index), name='index'),
     path('breeds/', cache_page(60)(BreedListView.as_view()), name='breeds'),
     path('breeds/<int:pk>/dogs/', DodBreedListView.as_view(), name='breed_dogs'),
+    path('breeds/search/', BreedSearchListView.as_view(), name='breeds_search'),
 
     path('dogs/', DodListView.as_view(), name='dogs_list'),
     path('dogs/deactivate/', DogDeactivatedListView.as_view(), name='dogs_deactivated_list'),
