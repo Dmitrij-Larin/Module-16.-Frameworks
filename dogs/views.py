@@ -26,6 +26,7 @@ class BreedListView(LoginRequiredMixin, ListView):
         'title': "Все наши породы"
     }
     template_name = 'dogs/breeds.html'
+    paginate_by = 3
 
 
 class DodBreedListView(LoginRequiredMixin, ListView):
@@ -46,6 +47,7 @@ class DodListView(ListView):
         'title': 'Питомник - Все наши собаки',
     }
     template_name = 'dogs/dogs.html'
+    paginate_by = 3
 
     def get_queryset(self):
         queryset = super().get_queryset()
