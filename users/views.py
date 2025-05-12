@@ -1,11 +1,8 @@
 import random
 import string
 
-from django.shortcuts import render, reverse, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.shortcuts import reverse, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.views.generic import CreateView, UpdateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -17,6 +14,9 @@ from users.services import send_new_password, send_register_email
 
 
 class UserRegisterView(CreateView):
+    """
+    Представление интерфейса регистрации пользователя
+    """
     model = User
     form_class = UserRegisterForm
     success_url = reverse_lazy('users:user_login')
@@ -26,12 +26,18 @@ class UserRegisterView(CreateView):
     }
 
     def form_valid(self, form):
+        """
+        Валидация формы при регистрации пользователя
+        """
         self.object = form.save()
         send_register_email(self.object.email)
         return super().form_valid(form)
 
 
 class UserLoginView(LoginView):
+    """
+    Представление интерфейса ввода данных для входа в аккаунт
+    """
     template_name = 'users/user_login.html'
     form_class = UserLoginForm
     extra_context = {
@@ -40,6 +46,9 @@ class UserLoginView(LoginView):
 
 
 class UserProfileView(UpdateView):
+    """
+    Представление профиля пользователя
+    """
     model = User
     form_class = UserForm
     template_name = 'users/user_profile_read_only.html'
@@ -48,10 +57,16 @@ class UserProfileView(UpdateView):
     }
 
     def get_object(self, queryset=None):
+        """
+        Проверка соответствия пользователя
+        """
         return self.request.user
 
 
 class UserUpdateView(UpdateView):
+    """
+    Представление интерфейса для обновления профиля пользователя
+    """
     model = User
     form_class = UserUpdateForm
     template_name = 'users/user_update.html'
@@ -61,10 +76,16 @@ class UserUpdateView(UpdateView):
     }
 
     def get_object(self, queryset=None):
+        """
+        Представление интерфейса для проверки соответствия пользователя
+        """
         return self.request.user
 
 
 class UserPasswordChangeView(PasswordChangeView):
+    """
+    Представление интерфейса для изменения пароля пользователя
+    """
     form_class = UserPasswordChangeForm
     template_name = 'users/user_change_password.html'
     success_url = reverse_lazy('users:user_profile')
@@ -74,6 +95,9 @@ class UserPasswordChangeView(PasswordChangeView):
 
 
 class UserLogoutView(LogoutView):
+    """
+    Представление интерфейса для выхода из аккаунта
+    """
     template_name = 'users/user_logout.html'
     extra_context = {
         'title': 'Выход из аккаунта'
@@ -81,6 +105,9 @@ class UserLogoutView(LogoutView):
 
 
 class UserListView(LoginRequiredMixin, ListView):
+    """
+    Представление списка всех пользователей
+    """
     model = User
     extra_context = {
         'title': "Питомник. Все наши пользователи"
@@ -89,16 +116,25 @@ class UserListView(LoginRequiredMixin, ListView):
     paginate_by = 3
 
     def get_queryset(self):
+        """
+        Фильтрация активных пользователей
+        """
         queryset = super().get_queryset()
         queryset = queryset.filter(is_active=True)
         return queryset
 
 
 class UserDetailView(DetailView):
+    """
+    Представление информации профиля пользователя
+    """
     model = User
     template_name = 'users/user_detail_view.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Передача дополнительных параметров в контекст шаблона проекта
+        """
         context_data = super().get_context_data()
         user_obj = self.get_object()
         context_data['title'] = f"Профиль пользователя - {user_obj}"
@@ -107,6 +143,9 @@ class UserDetailView(DetailView):
 
 @login_required
 def user_generate_new_password_view(request):
+    """
+    Представление интерфейса для генерации нового пароля пользователя
+    """
     new_password = ''.join(random.sample((string.ascii_letters + string.digits), 12))
     request.user.set_password(new_password)
     request.user.save()

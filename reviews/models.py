@@ -7,6 +7,9 @@ from dogs.models import Dog
 
 
 class Review(models.Model):
+    """
+    Модель отзывов
+    """
     title = models.CharField(max_length=150, verbose_name='Заголовок')
     slug = models.SlugField(max_length=25, unique=True, db_index=True, verbose_name='URL')
     content = models.TextField(verbose_name='Содержимое')
@@ -16,11 +19,20 @@ class Review(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE, related_name='dogs', verbose_name='Собака')
 
     def __str__(self):
+        """
+        Представление модели в строковом виде
+        """
         return f'{self.title}'
 
     def get_absolute_url(self):
+        """
+        Возвращение URL для детальной страницы отзыва
+        """
         return reverse('reviews:review_detail', kwargs={'slug': self.slug})
 
     class Meta:
+        """
+        Настройка параметров для модели Review
+        """
         verbose_name = 'reviews'
         verbose_name_plural = 'reviews'

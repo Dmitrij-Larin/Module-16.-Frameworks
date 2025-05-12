@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.http.response import Http404, HttpResponseForbidden
 from django.forms import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
@@ -14,6 +13,9 @@ from users.models import UserRoles
 
 
 def index(request):
+    """
+    Представление главной страницы
+    """
     context = {
         'object_list': Breed.objects.all()[:3],
         'title': 'Питомник - Главная'
@@ -22,6 +24,9 @@ def index(request):
 
 
 class BreedListView(LoginRequiredMixin, ListView):
+    """
+    Представление списка пород собак
+    """
     model = Breed
     extra_context = {
         'title': "Все наши породы"
@@ -31,6 +36,9 @@ class BreedListView(LoginRequiredMixin, ListView):
 
 
 class BreedSearchListView(LoginRequiredMixin, ListView):
+    """
+    Результат поискового запроса по породе собак
+    """
     model = Breed
     template_name = 'dogs/breeds.html'
     extra_context = {
@@ -38,6 +46,9 @@ class BreedSearchListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
+        """
+        Получение списка объектов по определенному запросу
+        """
         query = self.request.GET.get('q')
         print(query)
         object_list = Breed.objects.filter(
@@ -47,6 +58,9 @@ class BreedSearchListView(LoginRequiredMixin, ListView):
 
 
 class DodBreedListView(LoginRequiredMixin, ListView):
+    """
+    Продставление списка собак определенной породы
+    """
     model = Dog
     template_name = 'dogs/dogs.html'
     extra_context = {
@@ -54,11 +68,17 @@ class DodBreedListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
+        """
+        Получение списка обЪектов
+        """
         queryset = super().get_queryset().filter(breed_id=self.kwargs.get('pk'))
         return queryset
 
 
 class DodListView(ListView):
+    """
+    Представление всех собак
+    """
     model = Dog
     extra_context = {
         'title': 'Питомник - Все наши собаки',
@@ -67,12 +87,18 @@ class DodListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
+        """
+        Получение списка обЪектов
+        """
         queryset = super().get_queryset()
         queryset = queryset.filter(is_active=True)
         return queryset
 
 
 class DogDeactivatedListView(LoginRequiredMixin, ListView):
+    """
+    Представление списка неактивных собак
+    """
     model = Dog
     extra_context = {
         'title': 'Питомник - неактивные собаки'
@@ -80,6 +106,9 @@ class DogDeactivatedListView(LoginRequiredMixin, ListView):
     template_name = 'dogs/dogs.html'
 
     def get_queryset(self):
+        """
+        Получение списка обЪектов
+        """
         queryset = super().get_queryset()
         if self.request.user.role in [UserRoles.MODERATOR, UserRoles.ADMIN]:
             queryset = queryset.filter(is_active=False)
@@ -89,6 +118,9 @@ class DogDeactivatedListView(LoginRequiredMixin, ListView):
 
 
 class DogSearchListView(LoginRequiredMixin, ListView):
+    """
+    Результаты поискового запроса по кличке собаки
+    """
     model = Dog
     template_name = 'dogs/dogs.html'
     extra_context = {
@@ -96,6 +128,9 @@ class DogSearchListView(LoginRequiredMixin, ListView):
     }
 
     def get_queryset(self):
+        """
+        Получение списка обЪектов
+        """
         query = self.request.GET.get('q')
         print(query)
         object_list = Dog.objects.filter(
@@ -105,6 +140,9 @@ class DogSearchListView(LoginRequiredMixin, ListView):
 
 
 class DogCreateView(LoginRequiredMixin, CreateView):
+    """
+    Добавление (создание) собаки
+    """
     model = Dog
     form_class = DogForm
     template_name = 'dogs/create_update.html'
@@ -114,6 +152,9 @@ class DogCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('dogs:dogs_list')
 
     def form_valid(self, form):
+        """
+        Валидация формы, перед добавлением собаки
+        """
         if self.request.user.role != UserRoles.USER:
             raise PermissionDenied()
         self.object = form.save()
@@ -123,10 +164,16 @@ class DogCreateView(LoginRequiredMixin, CreateView):
 
 
 class DogDetailView(DetailView):
+    """
+    Представление подробной информации о собаке
+    """
     model = Dog
     template_name = 'dogs/detail.html'
 
     def get_context_data(self, **kwargs):
+        """
+        Передача дополнительных параметров в контекст шаблона проекта
+        """
         context_data = super().get_context_data(**kwargs)
         object_ = self.get_object()
         context_data['title'] = f'Подробная информация {object_}'
@@ -141,6 +188,9 @@ class DogDetailView(DetailView):
 
 
 class DogUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    Изменение (обновление) собаки
+    """
     model = Dog
     template_name = 'dogs/create_update.html'
     extra_context = {
@@ -148,9 +198,15 @@ class DogUpdateView(LoginRequiredMixin, UpdateView):
     }
 
     def get_success_url(self):
+        """
+        Перенаправление пользователя после успешного обновления объекта
+        """
         return reverse('dogs:dog_detail', args=[self.kwargs.get('pk')])
 
     def get_object(self, queryset=None):
+        """
+        Проверка на соответствие владельца объекта текущему пользователю
+        """
         self.object = super().get_object(queryset)
         # if self.object.owner != self.request.user and not self.request.user.is_staff:
         if self.object.owner != self.request.user and self.request.user.role != UserRoles.ADMIN:
@@ -158,6 +214,9 @@ class DogUpdateView(LoginRequiredMixin, UpdateView):
         return self.object
 
     def get_form_class(self):
+        """
+        Выбор класса формы в зависимости от роли пользователя
+        """
         dog_forms = {
             'admin': DogAdminForm,
             'moderator': DogForm,
@@ -168,6 +227,9 @@ class DogUpdateView(LoginRequiredMixin, UpdateView):
         return dog_form_class
 
     def get_context_data(self, **kwargs):
+        """
+        Передача дополнительных параметров в контекст шаблона проекта
+        """
         context_data = super().get_context_data(**kwargs)
         DogParentFormset = inlineformset_factory(Dog, DogParent, form=DogParentForm, extra=1)
         if self.request.method == 'POST':
@@ -178,6 +240,9 @@ class DogUpdateView(LoginRequiredMixin, UpdateView):
         return context_data
 
     def form_valid(self, form):
+        """
+        Валидация формы
+        """
         context_data = self.get_context_data()
         formset = context_data['formset']
         self.object = form.save()
@@ -190,6 +255,9 @@ class DogUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class DogDeleteView(PermissionRequiredMixin, DeleteView):
+    """
+    Удаление собаки
+    """
     model = Dog
     template_name = 'dogs/delete.html'
     extra_context = {
@@ -201,6 +269,9 @@ class DogDeleteView(PermissionRequiredMixin, DeleteView):
 
 
 def dog_toggle_activity(request, pk):
+    """
+    Переключения активности объекта "собака" в базе данных
+    """
     dog_item = get_object_or_404(Dog, pk=pk)
     if dog_item.is_active:
         dog_item.is_active = False
@@ -208,4 +279,3 @@ def dog_toggle_activity(request, pk):
         dog_item.is_active = True
     dog_item.save()
     return redirect(reverse('dogs:dogs_list'))
-

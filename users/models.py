@@ -6,12 +6,18 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class UserRoles(models.TextChoices):
+    """
+    Модель роли пользователя
+    """
     ADMIN = 'admin', _('admin')
     MODERATOR = 'moderator', _('moderator')
     USER = 'user', _('user')
 
 
 class User(AbstractUser):
+    """
+    Модель пользователя
+    """
     username = None
     email = models.EmailField(unique=True, verbose_name='Эл. почта')
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.USER)
@@ -26,9 +32,15 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     def __str__(self):
+        """
+        Представление модели в строковом виде
+        """
         return f'{self.email}'
 
     class Meta:
+        """
+        Настройка параметров для модели User
+        """
         verbose_name = 'User'
         verbose_name_plural = 'Users'
         ordering = ['id']
